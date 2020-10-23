@@ -608,6 +608,8 @@ if __name__ == "__main__":
     cfg = get_args(**Cfg)
     os.environ["CUDA_VISIBLE_DEVICES"] = cfg.gpu
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    print('torch.cuda.is_available()=',torch.cuda.is_available())
+    print('device=',device)
     logging.info(f'Using device {device}')
 
     if cfg.use_darknet_cfg:
