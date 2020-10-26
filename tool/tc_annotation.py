@@ -45,9 +45,12 @@ def tc2annotation(source_path, img_path, output_path):
         for key in tqdm(name_box_id.keys()):
             f.write(key)
             box_infos = name_box_id[key]
-            str_box_infos=" "+",".join([str(i) for i in box_infos])
-            f.write(str_box_infos)
+            for i in range(0, len(box_infos), 5):
+                f.write(" ")
+                s=",".join([str(box_infos[i]), str(box_infos[i+1]), str(box_infos[i+2]), str(box_infos[i+3]), str(box_infos[i+4])])
+                f.write(s)
             f.write('\n')
 
 if __name__ == '__main__':
-    tc2annotation(val_json, val_img, 'val.txt')
+    # tc2annotation(val_json, val_img, 'val.txt')
+    tc2annotation('../test.json', 'file_path',  'train.txt')
