@@ -1,4 +1,6 @@
 ﻿1 修改图片注释格式：json->txt
-2 修改类似：80->10(cfg.py)
+2 cfg.py
+修改类个数：80->10
+设置Cfg.use_darknet_cfg = False
 3 修改类别名：book...->0 1 2...(coco.names)
 4 修改Yolo4.cfg中的Yolo层（3处）: calsses:80->10
