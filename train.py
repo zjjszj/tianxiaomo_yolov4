@@ -239,6 +239,7 @@ class Yolo_loss(nn.Module):
             fsize = output.shape[2]
             n_ch = 5 + self.n_classes
 
+            print('output.shape====', output.shape)
             output = output.view(batchsize, self.n_anchors, n_ch, fsize, fsize)
             output = output.permute(0, 1, 3, 4, 2)  # .contiguous()
 
