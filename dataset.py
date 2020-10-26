@@ -294,6 +294,7 @@ class Yolo_dataset(Dataset):
                 bboxes = np.array(self.truth.get(img_path), dtype=np.float)
                 img_path = os.path.join(self.cfg.dataset_dir, img_path)
             img = cv2.imread(img_path)
+            print('img.shape===', img.shape)
             img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
             if img is None:
                 continue
@@ -381,6 +382,7 @@ class Yolo_dataset(Dataset):
                 out_bboxes.append(out_bbox)
                 # print(img_path)
         if use_mixup == 3:
+            print("out_bboxes[0].shape, out_bboxes[1].shape==", out_bboxes[0].shape, out_bboxes[1].shape)
             out_bboxes = np.concatenate(out_bboxes, axis=0)
         out_bboxes1 = np.zeros([self.cfg.boxes, 5])
         out_bboxes1[:min(out_bboxes.shape[0], self.cfg.boxes)] = out_bboxes[:min(out_bboxes.shape[0], self.cfg.boxes)]
