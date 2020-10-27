@@ -1,5 +1,4 @@
-import numpy as np
-from tqdm import tqdm
+import torch
 
-for i in range(0, 10, 2):
-    print(i)
+a=torch.rand(1,2,3,4,5)
+print(a[..., :4].shape)

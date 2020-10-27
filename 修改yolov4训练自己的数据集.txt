@@ -4,3 +4,8 @@
 设置Cfg.use_darknet_cfg = False
 3 修改类别名：book...->0 1 2...(coco.names)
 4 修改Yolo4.cfg中的Yolo层（3处）: calsses:80->10
+-->经过以上修改可以进行训练
+再次修改参数：
+1 Cfg.width=608->512(cfg.py)
+2 Cfg.TRAIN_EPOCHS=300->2(cfg.py)
+3 log_step=20->10(train.py)
