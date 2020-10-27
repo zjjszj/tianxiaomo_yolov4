@@ -381,7 +381,6 @@ class Yolo_dataset(Dataset):
                 out_bboxes.append(out_bbox)
                 # print(img_path)
         if use_mixup == 3:
-            print("out_bboxes[0].shape, out_bboxes[1].shape==", out_bboxes[0].shape, out_bboxes[1].shape)
             out_bboxes = np.concatenate(out_bboxes, axis=0)
         out_bboxes1 = np.zeros([self.cfg.boxes, 5])
         out_bboxes1[:min(out_bboxes.shape[0], self.cfg.boxes)] = out_bboxes[:min(out_bboxes.shape[0], self.cfg.boxes)]
