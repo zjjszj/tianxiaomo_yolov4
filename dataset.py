@@ -263,12 +263,12 @@ class Yolo_dataset(Dataset):
         # 调试时使用
         # 取100条训练数据
         # self.truth = truth
-        new_true={}
-        for i, (k, v) in enumerate(a.items()):
-            new_true[k] = v
+        new_truth={}
+        for i, (k, v) in enumerate(truth.items()):
+            new_truth[k] = v
             if (i == 99):
                 break
-        self.truth = new_true
+        self.truth = new_truth
 
         self.imgs = list(self.truth.keys())
 
