@@ -260,7 +260,16 @@ class Yolo_dataset(Dataset):
             for i in data[1:]:
                 truth[data[0]].append([int(float(j)) for j in i.split(',')])
 
-        self.truth = truth
+        # 调试时使用
+        # 取100条训练数据
+        # self.truth = truth
+        new_true={}
+        for i, (k, v) in enumerate(a.items()):
+            new_true[k] = v
+            if (i == 99):
+                break
+        self.truth = new_true
+
         self.imgs = list(self.truth.keys())
 
     def __len__(self):
@@ -423,11 +432,8 @@ def get_image_id(filename:str) -> int:
     >>> no = f"{int(no):04d}"
     >>> return int(lv+no)
     """
-    raise NotImplementedError("Create your own 'get_image_id' function")
-    lv, no = os.path.splitext(os.path.basename(filename))[0].split("_")
-    lv = lv.replace("level", "")
-    no = f"{int(no):04d}"
-    return int(lv+no)
+    # 返回文件名作为img_id
+    return filename.split('/')[-1].split('.')[0]
 
 
 if __name__ == "__main__":
@@ -438,7 +444,7 @@ if __name__ == "__main__":
     np.random.seed(2020)
     Cfg.dataset_dir = '/mnt/e/Dataset'
     dataset = Yolo_dataset(Cfg.train_label, Cfg)
-    for i in range(100):
+    for i in range(2):
         out_img, out_bboxes = dataset.__getitem__(i)
         a = draw_box(out_img.copy(), out_bboxes.astype(np.int32))
         plt.imshow(a.astype(np.int32))
