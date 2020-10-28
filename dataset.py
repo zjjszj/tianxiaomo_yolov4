@@ -435,9 +435,7 @@ def get_image_id(filename:str) -> int:
     >>> return int(lv+no)
     """
     # 返回文件名作为img_id
-    print('filename=-=-=', filename)
-    print('return value=', filename.split('/')[-1].split('.')[0])
-    return filename.split('/')[-1].split('.')[0]
+    return int(filename.split('/')[-1].split('.')[0])
 
 
 if __name__ == "__main__":
