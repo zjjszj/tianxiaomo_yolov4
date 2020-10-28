@@ -260,13 +260,15 @@ class Yolo_dataset(Dataset):
             for i in data[1:]:
                 truth[data[0]].append([int(float(j)) for j in i.split(',')])
 
-        # 调试时使用
-        # 取100条训练数据
+
         # self.truth = truth
+        # 调试时使用
+        # 取前n条训练数据
+        n=32
         new_truth={}
         for i, (k, v) in enumerate(truth.items()):
             new_truth[k] = v
-            if (i == 99):
+            if (i == n-1):
                 break
         self.truth = new_truth
 
@@ -433,6 +435,8 @@ def get_image_id(filename:str) -> int:
     >>> return int(lv+no)
     """
     # 返回文件名作为img_id
+    print('filename=-=-=', filename)
+    print('return value=', filename.split('/')[-1].split('.')[0])
     return filename.split('/')[-1].split('.')[0]
 
 
