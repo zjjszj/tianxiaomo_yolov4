@@ -230,6 +230,7 @@ def blend_truth_mosaic(out_img, img, bboxes, w, h, cut_x, cut_y, i_mixup,
         bboxes = filter_truth(bboxes, cut_x - right_shift, cut_y - bot_shift, w - cut_x, h - cut_y, cut_x, cut_y)
         out_img[cut_y:, cut_x:] = img[cut_y - bot_shift:h - bot_shift, cut_x - right_shift:w - right_shift]
 
+    print('type(out_img)===', type(out_img))
     return out_img, bboxes
 
 

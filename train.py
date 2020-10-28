@@ -278,6 +278,7 @@ def collate(batch):
     images = []
     bboxes = []
     for img, box in batch:
+        print('img.shape====', img.shape)
         images.append([img])
         bboxes.append([box])
     images = np.concatenate(images, axis=0)
