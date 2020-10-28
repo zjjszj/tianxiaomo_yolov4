@@ -53,7 +53,7 @@ Cfg.flip = 1
 Cfg.blur = 0
 Cfg.gaussian = 0
 Cfg.boxes = 60  # box num
-Cfg.TRAIN_EPOCHS = 2
+Cfg.TRAIN_EPOCHS = 3
 Cfg.train_label = os.path.join(_BASE_DIR, 'data', 'train.txt')
 Cfg.val_label = os.path.join(_BASE_DIR, 'data' ,'val.txt')
 Cfg.TRAIN_OPTIMIZER = 'adam'
@@ -75,4 +75,4 @@ Cfg.TRAIN_TENSORBOARD_DIR = os.path.join(_BASE_DIR, 'log')
 
 Cfg.iou_type = 'iou'  # 'giou', 'diou', 'ciou'
 
-Cfg.keep_checkpoint_max = 10
+Cfg.keep_checkpoint_max = 2

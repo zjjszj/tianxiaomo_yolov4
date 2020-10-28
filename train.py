@@ -366,7 +366,7 @@ def train(model, device, config, epochs=5, batch_size=1, save_cp=True, log_step=
         epoch_loss = 0
         epoch_step = 0
 
-        with tqdm(total=n_train, desc=f'Epoch {epoch + 1}/{epochs}', unit='img', ncols=50) as pbar:
+        with tqdm(total=n_train, desc=f'Epoch {epoch + 1}/{epochs}', unit='img', ncols=None) as pbar:
             for i, batch in enumerate(train_loader):
                 global_step += 1
                 epoch_step += 1
