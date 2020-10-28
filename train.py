@@ -273,12 +273,11 @@ class Yolo_loss(nn.Module):
 
         return loss, loss_xy, loss_wh, loss_obj, loss_cls, loss_l2
 
-
+# 输入为batch_size个数据
 def collate(batch):
     images = []
     bboxes = []
-    for img, box in batch:
-        print('img.shape====', img.shape)
+    for img, box in batch:      # numpy
         images.append([img])
         bboxes.append([box])
     images = np.concatenate(images, axis=0)

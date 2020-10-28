@@ -1,10 +1,10 @@
 import numpy as np
 
-
-a=[]
-a1=np.random.random((1,2,3))
-a2=np.random.random((1,2,3))
-a.append(a1)
-a.append(a2)
-b=np.concatenate(a, axis=0)
-print(b.shape)
+np.transpose
+N=2
+H=3
+W=4
+C=5
+a=np.arange(120).reshape(N,H,W,C)
+print(a.transpose(0,3,1,2).shape)
+# N C H W

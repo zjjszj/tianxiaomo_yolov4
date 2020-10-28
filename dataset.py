@@ -230,7 +230,6 @@ def blend_truth_mosaic(out_img, img, bboxes, w, h, cut_x, cut_y, i_mixup,
         bboxes = filter_truth(bboxes, cut_x - right_shift, cut_y - bot_shift, w - cut_x, h - cut_y, cut_x, cut_y)
         out_img[cut_y:, cut_x:] = img[cut_y - bot_shift:h - bot_shift, cut_x - right_shift:w - right_shift]
 
-    print('type(out_img)===', type(out_img))
     return out_img, bboxes
 
 
@@ -395,7 +394,7 @@ class Yolo_dataset(Dataset):
             out_bboxes = np.concatenate(out_bboxes, axis=0)
         out_bboxes1 = np.zeros([self.cfg.boxes, 5])
         out_bboxes1[:min(out_bboxes.shape[0], self.cfg.boxes)] = out_bboxes[:min(out_bboxes.shape[0], self.cfg.boxes)]
-        return out_img, out_bboxes1
+        return out_img, out_bboxes1     # numpy
 
     def _get_val_item(self, index):
         """
