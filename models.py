@@ -466,7 +466,7 @@ if __name__ == "__main__":
         imgfile = sys.argv[3]
         height = sys.argv[4]
         width = int(sys.argv[5])
-        namesfile = (sys.argv[6])
+        namesfile = (sys.argv[6])   # 把int去掉
     else:
         print('Usage: ')
         print('  python models.py num_classes weightfile imgfile namefile')
