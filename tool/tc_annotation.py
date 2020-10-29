@@ -4,7 +4,6 @@ from tqdm import tqdm
 import os
 
 
-
 # adjust annotation of Tian Chi street char dataset to this model.
 # source annotation(json): img_name height label left top width
 # target annotation(txt):image_path1 x1,y1,x2,y2,id x1,y1,x2,y2,id x1,y1,x2,y2,id ...
@@ -30,8 +29,8 @@ def tc2annotation(source_path, img_path, output_path):
         x1=v['left']
         y1=v['top']
         width=v['width']
-        x2=x1+width
-        y2=y1+height
+        x2=[x1[i]+width[i] for i in range(len(x1))]
+        y2=[y1[i]+height[i] for i in range(len(y1))]
         for i in range(len(x1)):
             name_box_id[path].append(x1[i])
             name_box_id[path].append(y1[i])
@@ -39,7 +38,6 @@ def tc2annotation(source_path, img_path, output_path):
             name_box_id[path].append(y2[i])
             name_box_id[path].append(label[i])
     # print(name_box_id)
-
     # write to train.txt
     with open(output_path, 'w') as f:
         for key in tqdm(name_box_id.keys()):
@@ -52,5 +50,5 @@ def tc2annotation(source_path, img_path, output_path):
             f.write('\n')
 
 if __name__ == '__main__':
-    # tc2annotation(val_json, val_img, 'val.txt')
-    tc2annotation('../test.json', 'file_path',  'train.txt')
+    tc2annotation(val_json, val_img, 'val.txt')
+    # tc2annotation('../test.json', 'file_path',  'train.txt')
