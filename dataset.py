@@ -272,7 +272,8 @@ class Yolo_dataset(Dataset):
         #     if (i == n-1):
         #         break
         # self.truth = new_truth
-
+        # self.imgs = list(self.truth.keys())
+        
     def __len__(self):
         return len(self.truth.keys())
 
