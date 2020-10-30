@@ -274,7 +274,7 @@ class Yolo_loss(nn.Module):
         return loss, loss_xy, loss_wh, loss_obj, loss_cls, loss_l2
 
 # 输入为batch_size个数据
-def collate(batch):
+def collate(batch):     # batch 类似于[(img1, tar1), (img2, tar2)...]
     images = []
     bboxes = []
     for img, box in batch:      # numpy
@@ -298,7 +298,7 @@ def train(model, device, config, epochs=5, batch_size=1, save_cp=True, log_step=
     train_loader = DataLoader(train_dataset, batch_size=config.batch // config.subdivisions, shuffle=True,
                               num_workers=4, pin_memory=True, drop_last=True, collate_fn=collate)
 
-    val_loader = DataLoader(val_dataset, batch_size=config.batch // config.subdivisions, shuffle=True, num_workers=8,
+    val_loader = DataLoader(val_dataset, batch_size=config.batch // config.subdivisions, shuffle=True, num_workers=4,
                             pin_memory=True, drop_last=True, collate_fn=val_collate)
 
     writer = SummaryWriter(log_dir=config.TRAIN_TENSORBOARD_DIR,

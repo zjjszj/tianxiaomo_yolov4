@@ -1,8 +1,7 @@
 import torch
 from torchvision.models.resnet import resnet18
 
-try:
-    r=2/0
-except Exception as  err:
-    print(err)
-print('ok')
+def collate_fn(batch):
+    return tuple(zip(*batch))
+
+print(collate_fn([(1,2),(3,4),(5,6)]))
