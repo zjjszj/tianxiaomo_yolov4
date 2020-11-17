@@ -427,15 +427,17 @@ def train(model, device, config, epochs=5, batch_size=1, save_cp=True, log_step=
             else:
                 eval_model.load_state_dict(model.state_dict())
 
-            # 使用cpu测试
-            cpu_deviec='cpu'
-            eval_model.load_state_dict(model.state_dict())
-            eval_model.to(cpu_deviec)
-            # eval_model.to(device)
+            # 使用cpu测试(1epoch内存不够)
+            # cpu_deviec='cpu'
+            # eval_model.load_state_dict(model.state_dict())
+            # eval_model.to(cpu_deviec)
+
+
+            eval_model.to(device)
 
             # 分配空间不够，添加try except,输出异常信息
             try:
-                evaluator = evaluate(eval_model, val_loader, config, cpu_deviec)
+                evaluator = evaluate(eval_model, val_loader, config, device)
             except Exception as  err:
                 print(err)
 
