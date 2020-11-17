@@ -260,20 +260,22 @@ class Yolo_dataset(Dataset):
             for i in data[1:]:
                 truth[data[0]].append([int(float(j)) for j in i.split(',')])
 
-        self.truth = truth
-        self.imgs = list(self.truth.keys())
 
         # 调试时使用
         # 取前n条训练数据
-        # n=32
-        # new_truth={}
-        # for i, (k, v) in enumerate(truth.items()):
-        #     new_truth[k] = v
-        #     if (i == n-1):
-        #         break
-        # self.truth = new_truth
+        n=32
+        new_truth={}
+        for i, (k, v) in enumerate(truth.items()):
+            new_truth[k] = v
+            if (i == n-1):
+                break
+        self.truth = new_truth
+        self.imgs = list(self.truth.keys())
+
+
+        # self.truth = truth
         # self.imgs = list(self.truth.keys())
-        
+
     def __len__(self):
         return len(self.truth.keys())
 
